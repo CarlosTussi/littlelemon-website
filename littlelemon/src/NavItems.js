@@ -1,7 +1,8 @@
 
-function Nav(){
-    return (
-        <nav>
+function NavItems()
+{
+    return(
+        <ul>
             <ul>
                 <a href="#home"><li>Home</li></a>
                 <a href="#about"><li>About</li></a>
@@ -10,8 +11,8 @@ function Nav(){
                 <a href="#order"><li>Order Online</li></a>
                 <a href="#login"><li>Login</li></a>
             </ul>
-        </nav>
-    );
+        </ul>
+    )
 }
 
-export default Nav;
+export default NavItems;

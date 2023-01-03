@@ -1,11 +1,13 @@
-import Nav from './Nav';
+import DesktopNav from './DesktopNav';
 import logoSrc from '../assets/logoBright.png';
+import HamburgerNav from './HamburgerNav';
 
 function Header(){
     return (
         <header>
             <img src={logoSrc} alt="Little lemon header logo"/>
-            <Nav />
+            <DesktopNav />
+            <HamburgerNav />
         </header>
     );
 }

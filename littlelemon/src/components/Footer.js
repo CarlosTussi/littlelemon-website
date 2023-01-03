@@ -1,19 +1,13 @@
 import footerLogo from '../assets/lemonBright.png'
+import NavItems from '../NavItems';
 
 function Footer(){
     return (
         <footer>
             <img src={footerLogo} alt="Logo showing only a yellow lemon" />
-            <section>
+            <section className="doormatNav">
                 <h4>Doormat Navigation</h4>
-                    <ul>
-                        <a href="#home"><li>Home</li></a>
-                        <a href="#about"><li>About</li></a>
-                        <a href="#menu"><li>Menu</li></a>
-                        <a href="#reservations"><li>Reservations</li></a>
-                        <a href="#order"><li>Order Online</li></a>
-                        <a href="#login"><li>Login</li></a>                        
-                    </ul>                
+                    <NavItems />         
             </section>
             <section>
                 <h4>Contact</h4>
