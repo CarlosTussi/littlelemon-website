@@ -6,11 +6,11 @@ function Footer(){
         <footer>
             <img src={footerLogo} alt="Logo showing only a yellow lemon" />
             <section className="doormatNav">
-                <h4>Doormat Navigation</h4>
+                <h3>Doormat Navigation</h3>
                     <NavItems />         
             </section>
             <section>
-                <h4>Contact</h4>
+                <h3>Contact</h3>
                 <ul>
                     <li>[ICON]Address</li>
                     <li>[ICON]Phone Number</li>
@@ -18,7 +18,7 @@ function Footer(){
                 </ul>
             </section>
             <section>
-                <h4>Social</h4>
+                <h3>Social</h3>
                 <ul>
                     <li>Instagram</li>
                     <li>Facebook</li>

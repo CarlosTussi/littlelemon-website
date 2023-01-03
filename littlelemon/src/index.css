@@ -1,7 +1,20 @@
+:root{
+
+  /* COLOR PALLETE */
+  --primary-color: #495E57; 
+  --secondary-color: #F4CE14;
+  --text-color: #EDEFEE;
+  --subheading-color: #333333;
+
+  
+}
+
 * {
   padding: 0;
   margin: 0;
 }
+
+/* Global Definitions */
 
 body {
   margin: 0;
@@ -21,9 +34,64 @@ body {
   flex-wrap: wrap;
 }
 
-.flex-column{
-  
+h1{
+  font-family: 'Markazi Text';
+  font-size: 4em;
+  font-weight: 500;
+  color: var(--secondary-color);
 }
+
+h2{
+  font-family: 'Markazi Text';
+  font-size: 2.5em;
+  font-weight: normal;
+  color: var(--text-color);
+}
+
+h3{
+  font-family: 'Karla';
+  font-size: 1.25em;
+  font-weight: bolder;
+  color: var(--secondary-color);
+}
+
+h4{
+  font-family: 'Karla';
+  font-size: 1.125em;
+  font-weight: bolder;
+  color: var(--text-color);
+}
+
+h5{
+  font-family: 'Karla';
+  font-size: 1em;
+  font-weight: bold;
+  color: var(--subheading-color);
+}
+
+p{
+  font-family: 'Karla';
+  font-size: 1em;
+  font-weight: normal;
+}
+
+ul {
+  list-style: none;
+}
+
+li{
+  font-family: 'Karla';
+}
+
+a {
+  text-decoration: none;
+}
+
+img{
+  border-radius: 16px;
+}
+
+
 
 /* HEADER */
 header {
@@ -31,6 +99,11 @@ header {
   justify-content: space-evenly;
   align-items: center;
   flex-wrap: wrap;
+}
+
+header li {
+  font-weight: 600;
+  color: var(--subheading-color);
 }
 
 header .hamburgerNav{
@@ -53,6 +126,7 @@ header ul {
 header li {
   padding: 0 1em 0 1em;
   margin: 0 auto 0 auto;
+  font-size: large;
 }
 
 /* MAIN */
@@ -61,17 +135,21 @@ main{
   flex-direction: column;
 }
 
-main p{
-  text-align: center;
-  /* padding: 15em; */
-  border: 0.3em solid black;
+main .mainBanner {
+    background: var(--primary-color);
+}
+
+main .mainReservation {
+  background: blanchedalmond;
 }
 
 /* FOOTER */
 footer {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-evenly;
+
+  background-color: var(--primary-color);
 }
 
 footer img {
@@ -82,8 +160,12 @@ footer ul {
   list-style: none;
 }
 
+footer li{
+  color: var(--text-color);
+}
+
 /* Smaller Screens */
-@media only screen and (max-width: 550px){
+@media only screen and (max-width: 630px){
   
   /* HEADER  */
   header .desktopNav {
@@ -107,7 +189,7 @@ footer ul {
   }
 
   footer img {
-    max-width: 2em;
+    max-width: 3em;
     grid-column: 1/3;
   }
 
