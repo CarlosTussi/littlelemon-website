@@ -86,6 +86,22 @@ img{
   border-radius: 16px;
 }
 
+button{
+  display: block;
+
+  border-radius: 16px;
+  
+  border:none;
+  background-color: var(--secondary-color);
+  padding: 1em 2em 1em 2em;
+
+  font-family: 'Karla';
+  font-size: 1em;
+  font-weight: 600;
+
+  margin: 1em 0;
+}
+
 
 
 /* HEADER */
@@ -131,34 +147,40 @@ main{
   flex-direction: column;
 }
 
+/* MAIN */
+/* Hero Banner */
 .heroBanner {
-    display: grid;
-    grid-template-areas: "title       image"
-                         "title    image"
-                         "description image";    
+  display:grid;
 
-    background: var(--primary-color);
-    padding: 1em 1em 1em 1em;
+  grid-template-areas: "title image"
+                       "content image";
     
+
+  padding: 2em 10em 2em 10em;
+  justify-content: space-evenly;
+  gap: 3em;
+
+  background-color: var(--primary-color);
 }
 
-.heroBanner img {
-  grid-area: image;
-  max-width: 8em;  
+.heroBannerTitle{
+  grid-area: title;
 }
 
-.heroBanner .heroTitle {
-  grid-area: title;  
-  line-height: 0.9;
+.heroBannerContent{
+  grid-area: content;  
+  max-width: 20em;
 }
 
-.heroBanner h2{
-  grid-area: subtitle;
+.heroBanner img{
+  grid-area:image;
+  max-width: 15em;
+  align-self: center;
+  justify-self: end;
 }
 
-.heroBanner h4{
-  grid-area: description;  
-}
+
+
 
 /* FOOTER */
 footer {
@@ -203,22 +225,28 @@ footer .navLink{
   }
 
   /* MAIN */
-  .heroBanner {
+.heroBanner{
     display: grid;
-    grid-template-areas: "title       title"
-                         "title    title"
-                         "description image"; 
+
+    grid-template-areas: "title title"                         
+                         "content image";
       
-  }
-  
-  .heroBanner img{
-  max-width: 5em;
+}
+
+  .heroBannerContent{
+    align-self: center;
+    min-width: 7em;
   }
 
-  .heroBanner h4{
-    align-self: center;
+  .heroBanner button{
+    align-self: start;
   }
-  
+
+  .heroBanner img{    
+    max-width: 10em;    
+  }
+
+
 
   /* FOOTER */
   footer {
