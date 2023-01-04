@@ -19,7 +19,14 @@ function BookingForm(props)
             <input  type="date" 
                     id="res-date" 
                     value={date}
-                    onChange= {(e) => props.dispatch({type:`${e.target.value}`})}
+                    onChange= {(e) => {
+                        
+                                    setDate(e.target.value);
+                                    props.dispatch({type:`${e.target.value}`})
+                                
+                                        }
+                                                                
+                }
                     />
             <label htmlFor="res-time">Choose time</label>
             <select id="res-time "
@@ -45,7 +52,8 @@ function BookingForm(props)
             </select>
             <input 
                 type="submit" 
-                value="Make Your reservation" />
+                value="Make Your reservation" 
+                onClick={(e) => e.preventDefault()}/>
         </form>
     );
 }
