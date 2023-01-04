@@ -1,5 +1,6 @@
 import imgSrc from '../assets/restaurant.jpeg'
 import HeroBanner from './HeroBanner';
+import WeeklySpecials from './WeeklySpecials';
 
 function Homepage()
 {
@@ -9,9 +10,7 @@ function Homepage()
                         imgSrc={imgSrc} 
                         alt="Picutre of molten lasagna"
                         button="Reserve a Table"/>
-            <section>
-                <p>Content of the main section of the homepage</p>
-            </section>
+            <WeeklySpecials />
         </section>
     )
 }

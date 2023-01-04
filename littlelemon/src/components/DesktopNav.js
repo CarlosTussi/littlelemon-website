@@ -2,7 +2,7 @@ import NavItems from "../NavItems";
 
 function Nav(){
     return (
-        <nav class="desktopNav">
+        <nav className="desktopNav">
             <NavItems/>
         </nav>
     );

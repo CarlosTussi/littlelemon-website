@@ -3,8 +3,11 @@
   /* COLOR PALLETE */
   --primary-color: #495E57; 
   --secondary-color: #F4CE14;
-  --text-color: #EDEFEE;
+  --subtitle-color: #EDEFEE;
+  --paragraph-color: #434343;
   --subheading-color: #333333;
+  --price-color: #EE9972;
+  --card-background: #EDEFEE;
 
   
 }
@@ -44,21 +47,21 @@ h2{
   font-family: 'Markazi Text';
   font-size: 2.5em;
   font-weight: normal;
-  color: var(--text-color);
+  color: var(--subtitle-color);
 }
 
 h3{
   font-family: 'Karla';
-  font-size: 1.25em;
+  font-size: 1.125em;
   font-weight: bolder;
-  color: var(--secondary-color);
+  color: var(--subtitle-color);
 }
 
 h4{
   font-family: 'Karla';
-  font-size: 1.125em;
+  font-size: 2em;
   font-weight: bolder;
-  color: var(--text-color);
+  color: var(--subheading-color);
 }
 
 h5{
@@ -68,10 +71,18 @@ h5{
   color: var(--subheading-color);
 }
 
+h6{
+  font-family: 'Karla';
+  font-size: 1em;
+  font-weight: bold;
+  color: var(--price-color);
+}
+
 p{
   font-family: 'Karla';
   font-size: 1em;
   font-weight: normal;
+  color: var(--paragraph-color);
 }
 
 ul {
@@ -179,7 +190,76 @@ main{
   justify-self: end;
 }
 
+/* MAIN */
+/* WeeklySpecials */
 
+.weeklySection h4{
+  text-align: center;
+  padding: 2em 0;
+}
+
+.weeklySpecialsContent{
+  display:flex;
+
+  justify-content: center;
+  flex-wrap: wrap;
+
+}
+.specialsCard {
+  display: grid;
+  grid-template-columns: 1fr; 
+
+  border-radius: 16px 16px 0 0;
+  background-color: var(--card-background);
+  
+  margin: 2em 2em;
+}
+
+.specialsCard img {
+  max-width: 20em;
+
+  border-radius: 16px 16px 0 0;
+}
+
+
+.cardContent {  
+  display: grid;
+
+  grid-template-areas: "titlePrice titlePrice"
+                       "description description"
+                        "button button";
+
+  max-width: 20em;
+  /* column-gap: 2em; */
+  padding: 1em 0 0 0;
+  
+}
+
+.cardTitlePrice{
+  display: flex;
+  justify-content: space-between;
+
+  grid-area: titlePrice;
+  padding: 1em 1em 4em 1em;;
+}
+
+.cardContent p{
+  grid-area: description;
+  padding: 0 1em 4em 1em;
+  text-align: center;
+}
+
+.cardContent button{
+  grid-area: button;
+
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  border-radius: 0;
+  cursor: pointer;
+
+  margin: 0;
+  
+}
 
 
 /* FOOTER */
@@ -200,12 +280,12 @@ footer ul {
 }
 
 footer li{
-  color: var(--text-color);
+  color: var(--subtitle-color);
 }
 
 footer .navLink{
   text-decoration: none;
-  color: var(--text-color);
+  color: var(--subtitle-color);
 }
 
 /* Smaller Screens */

@@ -7,7 +7,7 @@ function HeroBanner(props)
                 <h2>Chicago</h2>
             </div> 
             <div className="heroBannerContent">
-                <h4>{props.description}</h4>
+                <h3>{props.description}</h3>
                 {props.button ? <button>{props.button}</button> : ""}
             </div>                       
             <img src={props.imgSrc} alt={props.alt}/>                
