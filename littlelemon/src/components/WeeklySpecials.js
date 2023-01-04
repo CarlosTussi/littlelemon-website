@@ -32,8 +32,11 @@ const weeklyCards = [
 function WeeklySpecials()
 {
     return(
-        <section className="weeklySection">        
-            <h4>This Week's Specials!</h4>           
+        <section className="weeklySection">
+            <div className="weeklySectiontitle">       
+                <h4>This Week's Specials!</h4>  
+                <button>Online Menu</button>   
+            </div>       
             <div className="weeklySpecialsContent">            
             {
                 weeklyCards.map((item) =>{
