@@ -15,7 +15,6 @@
 }
 
 /* Global Definitions */
-
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -83,10 +82,6 @@ li{
   font-family: 'Karla';
 }
 
-a {
-  text-decoration: none;
-}
-
 img{
   border-radius: 16px;
 }
@@ -101,7 +96,8 @@ header {
   flex-wrap: wrap;
 }
 
-header li {
+header .navLink {
+  text-decoration: none;
   font-weight: 600;
   color: var(--subheading-color);
 }
@@ -135,12 +131,33 @@ main{
   flex-direction: column;
 }
 
-main .mainBanner {
+.heroBanner {
+    display: grid;
+    grid-template-areas: "title       image"
+                         "title    image"
+                         "description image";    
+
     background: var(--primary-color);
+    padding: 1em 1em 1em 1em;
+    
 }
 
-main .mainReservation {
-  background: blanchedalmond;
+.heroBanner img {
+  grid-area: image;
+  max-width: 8em;  
+}
+
+.heroBanner .heroTitle {
+  grid-area: title;  
+  line-height: 0.9;
+}
+
+.heroBanner h2{
+  grid-area: subtitle;
+}
+
+.heroBanner h4{
+  grid-area: description;  
 }
 
 /* FOOTER */
@@ -164,6 +181,11 @@ footer li{
   color: var(--text-color);
 }
 
+footer .navLink{
+  text-decoration: none;
+  color: var(--text-color);
+}
+
 /* Smaller Screens */
 @media only screen and (max-width: 630px){
   
@@ -179,6 +201,24 @@ footer li{
   header .hamburgerNav {
     display: block;
   }
+
+  /* MAIN */
+  .heroBanner {
+    display: grid;
+    grid-template-areas: "title       title"
+                         "title    title"
+                         "description image"; 
+      
+  }
+  
+  .heroBanner img{
+  max-width: 5em;
+  }
+
+  .heroBanner h4{
+    align-self: center;
+  }
+  
 
   /* FOOTER */
   footer {
