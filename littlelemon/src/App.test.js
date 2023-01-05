@@ -1,8 +1,10 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen,  } from '@testing-library/react';
 import BookingPage from './components/BookingPage';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import BookingForm from './components/BookingForm';
+
+import { unmountComponentAtNode } from "react-dom";
 
 test('Basic rendering testing', () => {
   
@@ -18,6 +20,30 @@ test('Basic rendering testing', () => {
   expect(headingElement).toBeInTheDocument();
 
 });
+
+
+  /* NEED TO BE CREATED OUTSIDE TEST */
+  //We can populate container to check it renders whatever we are expecting
+  let container = null;
+  beforeEach(() => {
+    // setup a DOM element as a render target
+    container = document.createElement("div");
+    document.body.appendChild(container);
+  });
+
+
+  afterEach(() => {
+    // cleanup on exiting
+    unmountComponentAtNode(container);
+    container.remove();
+    container = null;
+  });
+
+test('Creating temporary screen elements for testing react', () => {
+
+    //To use it
+    // render(<MyComponent id="123" />, container);  //Renderin "<MyComponent>" inside "container"
+})
 
 
 test("Testing updateTimes() and initializeTimes()", ()=> {
