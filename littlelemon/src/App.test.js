@@ -7,9 +7,12 @@ import BookingForm from './components/BookingForm';
 test('Basic rendering testing', () => {
   
   render(<App />, {wrapper: BrowserRouter}); //How to render App with Routing
-  render( <BookingPage>
+  render( 
+    <BrowserRouter>
+          <BookingPage>
             <BookingForm />
-          </BookingPage>);
+          </BookingPage>
+      </BrowserRouter>);
 
   const headingElement = screen.getByText("Make Your reservation");
   expect(headingElement).toBeInTheDocument();
@@ -18,42 +21,63 @@ test('Basic rendering testing', () => {
 
 
 test("Testing updateTimes() and initializeTimes()", ()=> {
-  
-  const initialSlots = ["17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00", "20:30", "21:00", "21:30", "22:00", "22:30",];
-  const updatedSlots = ["18:30", "19:00", "21:30", "22:00"];
 
-  render( <BookingPage>
+
+  render( 
+        <BrowserRouter>
+          <BookingPage>
             <BookingForm />                         
-          </BookingPage>);
+          </BookingPage>
+          </BrowserRouter>
+          );
+
+    /*"the fetchAPI function will return a non-empty array of available booking times."*/
+     //Check that we have least one option in the dropdown menu
+     //Time Regular expression
+    //('/[0-1]?[0-9]|2[0-3]:[0:5][0-9]/');     
+    const initialSelection = screen.getAllByText(/\d\d:\d\d/);  //Matching a time pattern xx:xx   
+    expect(initialSelection).not.toHaveLength(0);
+
+    /* You will need to update the test to include a pre-selected date as part of the dispatch data. */
+    //Check that a date was pre-selected correctly
+    const dataInput = screen.getByLabelText("Choose date");
+    fireEvent.change(dataInput, {target: {value: "2023-07-25"}})
+
+    const updateSelection = screen.getAllByText(/\d\d:\d\d/);
+    expect(updateSelection).not.toHaveLength(0);
+
+
+    /* JUST FO REFERENCE */
 
 
     //1) Check if the value on the time slot input equals the initialSlots value
-    initialSlots.forEach(element => {
-        const option = screen.getByText(element);
-        expect(option).toBeInTheDocument(); 
-    });
+    //Old test (reference)
+    // initialSlots.forEach(element => {
+    //     const option = screen.getByText(element);
+    //     expect(option).toBeInTheDocument(); 
+    // });
 
     //2) Force the change of a date
-    const dataInput = screen.getByLabelText("Choose date");
-    fireEvent.change(dataInput, {target: {value: "2023-01-04"}})
+    //Old test (reference)
+    // const dataInput = screen.getByLabelText("Choose date");
+    // fireEvent.change(dataInput, {target: {value: "2023-07-25"}})
 
     //3) Check if the time slots have been updated
-    updatedSlots.forEach(element => {
-      const option = screen.getByText(element);
-      expect(option).toBeInTheDocument();
-    })
+    //Old Test (reference)
+    // updatedSlots.forEach(element => {
+    //   const option = screen.getByText(element);
+    //   expect(option).toBeInTheDocument();
+    // })
     
-    
-   
     /* EXTRA TESTS JUST FOR REFERENCE */
     //Force a click on the button
-    const submitButton = screen.getByRole("button");
-    fireEvent.click(submitButton);
+    // const submitButton = screen.getByRole("button");
+    // fireEvent.click(submitButton);
 
     //Verify if the functions got executed.
-    expect(dataInput).toBeInTheDocument();
+    // expect(dataInput).toBeInTheDocument();
     //For future reference on how to check the value
-    expect(dataInput).toHaveDisplayValue("2023-01-04")
+    // expect(dataInput).toHaveDisplayValue("2023-01-04")
 
 
 });

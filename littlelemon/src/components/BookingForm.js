@@ -51,7 +51,7 @@ function BookingForm(props)
                 }
                     />
             <label htmlFor="res-time">Choose time</label>
-            <select id="res-time "
+            <select id="res-time"
                     value={time}
                     onChange= {(e) => {setTime(e.target.value)}}>
                         {props.availableTimes.map((timeSlot) => {
