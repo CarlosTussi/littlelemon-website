@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
 
 function BookingForm(props)
 {
@@ -9,6 +10,11 @@ function BookingForm(props)
     const [occasion, setOccasion] = useState("none");
 
     
+    const dispatch = props.dispatch;
+    useEffect( () =>{
+        dispatch({type:`${date}`});
+    },[date, dispatch])
+
 
     return(
         <form style={{display: "grid", 
@@ -19,12 +25,7 @@ function BookingForm(props)
             <input  type="date" 
                     id="res-date" 
                     value={date}
-                    onChange= {(e) => {
-                        
-                                    setDate(e.target.value);
-                                    props.dispatch({type:`${e.target.value}`})
-                                
-                                        }
+                    onChange= {(e) => {setDate(e.target.value);}
                                                                 
                 }
                     />

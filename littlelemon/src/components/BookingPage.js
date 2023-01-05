@@ -1,32 +1,63 @@
 import imgSrc from '../assets/lasagna.jpeg'
 import BookingForm from './BookingForm';
 import HeroBanner from './HeroBanner';
-import { useReducer, } from "react";
+import { useEffect, useReducer, } from "react";
 
-
-const updateTimes = (state, action) => {
-    //to do
-    console.log(action);
-    console.log(state);
-    return ["18:30", "19:00", "21:30", "22:00"];
-}
+import { fetchAPI, submitAPI } from '../api/api';
 
 function BookingPage()
 {
     
-
+    //Will always be called inside updateTimes which will always be inside useEffect
     const initializeTimes = () => {
-        //to do
-        console.log("Initializing");
-        const initialSlots = ["17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00", "20:30", "21:00", "21:30", "22:00", "22:30",];
+        const todayDate = new Date();
 
-        return initialSlots
+        try{
+            const initialSlots = fetchAPI(todayDate);
+            if(initialSlots)  
+                return initialSlots;
+            else
+                throw Error("Could not fetch time slots");
+        }catch(e){
+            console.log("Error: ", e);
+            return [""];
+        }
+
     }
-    const initialSlots = ["17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00", "20:30", "21:00", "21:30", "22:00", "22:30",];
 
-    const [availableTimes, dispatch] = useReducer(updateTimes, initialSlots, initializeTimes);
+    //updateTimes will always be dispatched inside useEffect
+    const updateTimes = (state, action) => {
+        //to do    
 
-   
+        //Initial time slots
+        if(action.type ==='initialize'){
+            const initialSlots = initializeTimes();
+            return initialSlots;
+        }
+        //Time slots according to today's date
+        else{
+            const selectedDate = new Date(action.type);
+        
+            try{
+                const availableSlots = fetchAPI(selectedDate);
+                if(availableSlots)
+                    return availableSlots;
+                else    
+                    throw Error("Could not fetch time slots");
+            }catch(e){
+                console.log("Error: ", e);
+                return [""];
+            }                        
+        }                
+    }
+
+    const [availableTimes, dispatch] = useReducer(updateTimes, [""], initializeTimes);
+
+    useEffect (() => {
+        dispatch({type: "initialize"});
+    },[])//Empty array because onlly executed when initializing
+
+
     return(
         <>
            <HeroBanner description="Reserve you table now and discover our newly designed space in Chicago. You will love it!"
