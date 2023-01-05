@@ -4,11 +4,37 @@ import HeroBanner from './HeroBanner';
 import { useEffect, useReducer, } from "react";
 
 import { fetchAPI, submitAPI } from '../api/api';
+import { useNavigate } from 'react-router-dom';
 
 function BookingPage()
 {
+
+    const navigate = useNavigate();
+
+    /* NOTE:
+        All these functions (submitForm, initializeTimes, updateTimes)
+            are called inside <BookingForm> component using useEffect.
+
+        The only exception is updateTimes that is called inside a useEffect
+        with empty dependency array so that it initialzes the initial time slots
+        upon component rendering.
+
+        I believe this whole logic could have been implemented inside <BookingForm> itself.
+    */
+    const submitForm = (data) => {
+
+        const response = submitAPI(data);
+        
+        if (response){ 
+            navigate("/confirmation");
+            console.log(data);
+        }
+        else
+            console.log("Error");
+        
+    }
     
-    //Will always be called inside updateTimes which will always be inside useEffect
+    //WILL ALWAYS be called inside updateTimes which will always be inside useEffect
     const initializeTimes = () => {
         const todayDate = new Date();
 
@@ -25,7 +51,7 @@ function BookingPage()
 
     }
 
-    //updateTimes will always be dispatched inside useEffect
+    //updateTimes WILL ALWAYS be dispatched inside useEffect
     const updateTimes = (state, action) => {
         //to do    
 
@@ -55,7 +81,7 @@ function BookingPage()
 
     useEffect (() => {
         dispatch({type: "initialize"});
-    },[])//Empty array because onlly executed when initializing
+    },[])//Empty array because only executed when initializing
 
 
     return(
@@ -67,6 +93,7 @@ function BookingPage()
             <section>
                 <BookingForm availableTimes={availableTimes} 
                              dispatch={dispatch}
+                             onSubmit={submitForm}
                     />
             </section>
         </>

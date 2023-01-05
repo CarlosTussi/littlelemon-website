@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 
 function BookingForm(props)
@@ -9,12 +9,33 @@ function BookingForm(props)
     const [guests, setGuests] = useState(1);
     const [occasion, setOccasion] = useState("none");
 
-    
+    const [isSubmitted, setIsSubmitted] = useState(false);
+
+    //Retrieve Available Slots with the new date
     const dispatch = props.dispatch;
     useEffect( () =>{
         dispatch({type:`${date}`});
     },[date, dispatch])
 
+
+  //Will avoid running when the form input remain the same
+  const formData = useMemo( () =>{
+    return {
+        date: date,
+        time:time,
+        guests: guests,
+        occasion: occasion,
+    }
+  }, [date, time, guests, occasion]);
+
+    //Send date
+    const onSubmit = props.onSubmit; //callback function that will run submitAPI
+    useEffect( () => {
+        //To avoid the initial execution
+        if(isSubmitted){
+            onSubmit(formData);                  
+        }
+    },[isSubmitted, onSubmit, formData])
 
     return(
         <form style={{display: "grid", 
@@ -54,7 +75,9 @@ function BookingForm(props)
             <input 
                 type="submit" 
                 value="Make Your reservation" 
-                onClick={(e) => e.preventDefault()}/>
+                onClick={(e) => {e.preventDefault()
+                                   setIsSubmitted(true); 
+                                }}/>
         </form>
     );
 }
