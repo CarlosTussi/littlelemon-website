@@ -64,6 +64,7 @@ function BookingForm(props)
     },[isSubmitted, onSubmit, formik.values])
 
 
+    //Logic to enable/disbable the submit button
     const isFormValid = () =>{       
         if(  formik.errors.hasOwnProperty("bookingName") ||
              formik.errors.hasOwnProperty("time")  ||
