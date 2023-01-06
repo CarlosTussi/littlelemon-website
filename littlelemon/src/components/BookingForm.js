@@ -1,84 +1,151 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
+import {useFormik, } from "formik";
+import * as Yup from "yup";
 
 
+
+function ErrorMessage (props)
+{
+    return (
+    <p style={{
+        color: "red",      
+        display: `${props.isDisplayed? "block" : "none"}`
+    }}>
+        {props.children}
+    </p>
+    );
+}
+
+//To confiorm with HTML5 date picker
+const todayDate = new Date().toJSON().slice(0, 10);
 function BookingForm(props)
 {
+    const formik = useFormik({
+        initialValues: {
+            date: todayDate,
+            time: "",
+            guests: 1,
+            occasion: "",
+            bookingName: "",
+        },
 
-    const [date, setDate] = useState("2023-01-01");
-    const [time, setTime] = useState("");
-    const [guests, setGuests] = useState(1);
-    const [occasion, setOccasion] = useState("none");
+        onSubmit: (data) => {
+            //to-do
+        },
+
+        validationSchema: Yup.object({
+            bookingName: Yup.string().required(),
+            date: Yup.date().min(todayDate).required(), //new Date() will return today's date
+            time: Yup.string().matches(/\d\d:\d\d/).required(),
+            guests: Yup.number().required().min(1).max(10),
+            occasion: Yup.string().required(),
+
+        })
+    })
 
     const [isSubmitted, setIsSubmitted] = useState(false);
 
     //Retrieve Available Slots with the new date
     const dispatch = props.dispatch;
-    useEffect( () =>{
-        dispatch({type:`${date}`});
-    },[date, dispatch])
+    useEffect( () =>{        
+        dispatch({type:`${formik.values.date}`});
 
+    },[dispatch, formik.values.date])
 
-  //Will avoid running when the form input remain the same
-  const formData = useMemo( () =>{
-    return {
-        date: date,
-        time:time,
-        guests: guests,
-        occasion: occasion,
-    }
-  }, [date, time, guests, occasion]);
 
     //Send date
     const onSubmit = props.onSubmit; //callback function that will run submitAPI
     useEffect( () => {
         //To avoid the initial execution
-        if(isSubmitted){
-            onSubmit(formData);                  
-        }
-    },[isSubmitted, onSubmit, formData])
+        if(isSubmitted){          
 
+            /** FORMIK =>> onSubmit (formik.values) */
+
+            onSubmit(formik.values);
+        }
+    },[isSubmitted, onSubmit, formik.values])
+
+
+
+    //formik.touched.name && formik.errors.hasOwnProperty("name")
+    //{...formik.getFieldProps("name")}
     return(
-        <form style={{display: "grid", 
-                      maxWidth: "200px", 
-                      gap: "20px"}}             
-                      >
-            <label htmlFor="res-date">Choose date</label>
-            <input  type="date" 
-                    id="res-date" 
-                    value={date}
-                    onChange= {(e) => {setDate(e.target.value);}
-                                                                
-                }
-                    />
-            <label htmlFor="res-time">Choose time</label>
-            <select id="res-time"
-                    value={time}
-                    onChange= {(e) => {setTime(e.target.value)}}>
-                        {props.availableTimes.map((timeSlot) => {
-                            return <option key={timeSlot}>{timeSlot}</option>
-                        })}                
-            </select>
-            <label htmlFor="guests">Number of guests</label>
-            <input type="number" 
-                    placeholder="1" 
-                    min="1" max="10" 
-                    id="guests" 
-                    value={guests}
-                    onChange= {(e) => {setGuests(e.target.value)}}/>
-            <label htmlFor="occasion">Occasion</label>
-            <select id="occasion"
-                        value={occasion}
-                        onChange= {(e) => {setOccasion(e.target.value)}}>
-                <option>Birthday</option>
-                <option>Anniversary</option>
-            </select>
-            <input 
-                type="submit" 
-                value="Make Your reservation" 
-                onClick={(e) => {e.preventDefault()
-                                   setIsSubmitted(true); 
-                                }}/>
-        </form>
+        <>    
+            <form style={{display: "grid", 
+                        maxWidth: "200px", 
+                        gap: "20px"}} 
+                        onSubmit={formik.handleSubmit}                       
+                        >
+                <label htmlFor="bookingName">Name</label>
+                <input type="text"
+                    id="bookingName"   
+                    name="bookingName"                                
+                    required
+                    {...formik.getFieldProps("bookingName")}
+                />                
+                <ErrorMessage isDisplayed={formik.touched.bookingName && formik.errors.hasOwnProperty("bookingName")}>
+                    Please type your name
+                </ErrorMessage>              
+                <label htmlFor="res-date">Choose date</label>
+                <input  type="date" 
+                        id="res-date"  
+                        name="res-date"   
+                        required          
+                        {...formik.getFieldProps("date")}                          
+                        />
+                <ErrorMessage isDisplayed={formik.touched.date && formik.errors.hasOwnProperty("date")}>
+                    Please select a valid date (DD/MM/YYY)
+                </ErrorMessage>
+                <label htmlFor="res-time">Choose time</label>
+                <select id="res-time"
+                        name="res-time"
+                        {...formik.getFieldProps("time")}
+                        required
+                        >                        
+                            <option defaultValue="selected">Select a time slot</option>
+                            {props.availableTimes.map((timeSlot) => {
+                                return <option key={timeSlot}>{timeSlot}</option>
+                            })}                                                                
+                </select>
+                {console.log("==")}
+                {console.log(!props.availableTimes.includes(formik.values.time))}
+                {console.log(formik.errors.hasOwnProperty("time"))}
+                {console.log(formik.touched.time)}
+                {console.log("==")}
+                <ErrorMessage isDisplayed={formik.touched.time && 
+                                           formik.errors.hasOwnProperty("time") |
+                                           formik.touched.time &&
+                                           !props.availableTimes.includes(formik.values.time)}>
+                    Please select a time slot
+                </ErrorMessage>
+                <label htmlFor="guests">Number of guests</label>
+                <input type="number" 
+                        placeholder="1" 
+                        min="1" max="10" 
+                        id="guests" 
+                        name="guests"
+                        {...formik.getFieldProps("guests")}
+                        />
+                 <ErrorMessage isDisplayed={formik.touched.guests && formik.errors.hasOwnProperty("guests")}>
+                    Min 1 guest and max 10 guests
+                </ErrorMessage>
+                <label htmlFor="occasion">Special Occasion</label>
+                <select id="occasion"
+                        name="occasion"                    
+                        {...formik.getFieldProps("occasion")}
+                            >
+                    <option defaultValue="selected">Select a special occasion</option>
+                    <option>Birthday</option>
+                    <option>Anniversary</option>
+                </select>
+                <input 
+                    type="submit" 
+                    value="Make Your reservation" 
+                    onClick={(e) => {e.preventDefault()
+                                       setIsSubmitted(true); 
+                                    }}/>
+            </form>
+        </>
     );
 }
 
