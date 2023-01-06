@@ -29,9 +29,9 @@ function BookingForm(props)
             bookingName: "",
         },
 
-        onSubmit: (data) => {            
-            //to-do (?) If submit log not implemented on the submit button            
-            console.log("fprkim on submit")
+        onSubmit: (data) => {  
+            //Will trigger the useEffect hook which will submit the data                     
+            setIsSubmitted(true);
         },
 
         validationSchema: Yup.object({
@@ -39,7 +39,7 @@ function BookingForm(props)
             date: Yup.date().min(todayDate).required(), //new Date() will return today's date
             time: Yup.string().matches(/\d\d:\d\d/).required(),
             guests: Yup.number().required().min(1).max(10),
-            occasion: Yup.string().required(),
+            occasion: Yup.string(),
 
         })
     })
@@ -59,9 +59,6 @@ function BookingForm(props)
     useEffect( () => {
         //To avoid the initial execution
         if(isSubmitted){          
-
-            /** FORMIK =>> onSubmit (formik.values) */
-
             onSubmit(formik.values);
         }
     },[isSubmitted, onSubmit, formik.values])
@@ -150,9 +147,6 @@ function BookingForm(props)
                     type="submit" 
                     disabled = {isFormValid()? false : true}
                     value="Make Your reservation" 
-                    onClick={(e) => {e.preventDefault()                                                                    
-                                    setIsSubmitted(true);
-                                    }}
                                     />
             </form>
         </>
