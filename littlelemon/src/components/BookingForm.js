@@ -29,8 +29,9 @@ function BookingForm(props)
             bookingName: "",
         },
 
-        onSubmit: (data) => {
-            //to-do
+        onSubmit: (data) => {            
+            //to-do (?) If submit log not implemented on the submit button            
+            console.log("fprkim on submit")
         },
 
         validationSchema: Yup.object({
@@ -66,6 +67,19 @@ function BookingForm(props)
     },[isSubmitted, onSubmit, formik.values])
 
 
+    const isFormValid = () =>{       
+        if(  formik.errors.hasOwnProperty("bookingName") ||
+             formik.errors.hasOwnProperty("time")  ||
+             formik.errors.hasOwnProperty("guests") ||
+             formik.errors.hasOwnProperty("date")  
+        )
+            return false;
+        //If touched at least once and no error (to avoid enabling the on the initial render)
+        else if(Object.keys(formik.touched).length > 0 &&
+                props.availableTimes.includes(formik.values.time)
+                )   
+                return true;       
+    }
 
     //formik.touched.name && formik.errors.hasOwnProperty("name")
     //{...formik.getFieldProps("name")}
@@ -107,11 +121,6 @@ function BookingForm(props)
                                 return <option key={timeSlot}>{timeSlot}</option>
                             })}                                                                
                 </select>
-                {console.log("==")}
-                {console.log(!props.availableTimes.includes(formik.values.time))}
-                {console.log(formik.errors.hasOwnProperty("time"))}
-                {console.log(formik.touched.time)}
-                {console.log("==")}
                 <ErrorMessage isDisplayed={formik.touched.time && 
                                            formik.errors.hasOwnProperty("time") |
                                            formik.touched.time &&
@@ -140,10 +149,12 @@ function BookingForm(props)
                 </select>
                 <input 
                     type="submit" 
+                    disabled = {isFormValid()? false : true}
                     value="Make Your reservation" 
-                    onClick={(e) => {e.preventDefault()
-                                       setIsSubmitted(true); 
-                                    }}/>
+                    onClick={(e) => {e.preventDefault()                                                                    
+                                    setIsSubmitted(true);
+                                    }}
+                                    />
             </form>
         </>
     );
