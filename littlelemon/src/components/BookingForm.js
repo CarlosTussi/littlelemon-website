@@ -7,8 +7,7 @@ import * as Yup from "yup";
 function ErrorMessage (props)
 {
     return (
-    <p style={{
-        color: "red",      
+    <p style={{    
         display: `${props.isDisplayed? "block" : "none"}`
     }}>
         {props.children}
@@ -83,12 +82,10 @@ function BookingForm(props)
     //{...formik.getFieldProps("name")}
     return(
         <>    
-            <form style={{display: "grid", 
-                        maxWidth: "200px", 
-                        gap: "20px"}} 
-                        onSubmit={formik.handleSubmit}                       
+            <form onSubmit={formik.handleSubmit} 
+                  aria-label="Reservation system form"                      
                         >
-                <label htmlFor="bookingName">Name</label>
+                <label htmlFor="bookingName">Name*</label>
                 <input type="text"
                     id="bookingName"   
                     name="bookingName"                                
@@ -98,7 +95,7 @@ function BookingForm(props)
                 <ErrorMessage isDisplayed={formik.touched.bookingName && formik.errors.hasOwnProperty("bookingName")}>
                     Please type your name
                 </ErrorMessage>              
-                <label htmlFor="res-date">Choose date</label>
+                <label htmlFor="res-date">Choose date*</label>
                 <input  type="date" 
                         id="res-date"  
                         name="res-date"   
@@ -106,9 +103,9 @@ function BookingForm(props)
                         {...formik.getFieldProps("date")}                          
                         />
                 <ErrorMessage isDisplayed={formik.touched.date && formik.errors.hasOwnProperty("date")}>
-                    Please select a valid date (DD/MM/YYY)
+                    Please select a valid date
                 </ErrorMessage>
-                <label htmlFor="res-time">Choose time</label>
+                <label htmlFor="res-time">Choose time*</label>
                 <select id="res-time"
                         name="res-time"
                         {...formik.getFieldProps("time")}
@@ -125,7 +122,7 @@ function BookingForm(props)
                                            !props.availableTimes.includes(formik.values.time)}>
                     Please select a time slot
                 </ErrorMessage>
-                <label htmlFor="guests">Number of guests</label>
+                <label htmlFor="guests">Number of guests*</label>
                 <input type="number"  
                         min="1" max="10" 
                         id="guests" 
@@ -144,10 +141,12 @@ function BookingForm(props)
                     <option>Birthday</option>
                     <option>Anniversary</option>
                 </select>
+                <small>* Required fields</small>
                 <input 
                     type="submit" 
                     disabled = {isFormValid()? false : true}
                     value="Make Your reservation" 
+                    aria-label="Submit form"
                                     />
             </form>
         </>

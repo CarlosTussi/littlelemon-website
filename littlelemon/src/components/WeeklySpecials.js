@@ -32,7 +32,8 @@ const weeklyCards = [
 function WeeklySpecials()
 {
     return(
-        <section className="weeklySection">
+        <section className="weeklySection"
+        >
             <div className="weeklySectiontitle">       
                 <h4>This Week's Specials!</h4>  
                 <button>Online Menu</button>   

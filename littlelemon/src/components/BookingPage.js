@@ -90,7 +90,8 @@ function BookingPage()
                         imgSrc={imgSrc}
                         alt="Restaurant with tables and plants decorating"
                         />
-            <section>
+            <section className="formSection">
+                <h4>Reserve a Table</h4>
                 <BookingForm availableTimes={availableTimes} 
                              dispatch={dispatch}
                              onSubmit={submitForm}

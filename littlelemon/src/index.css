@@ -276,6 +276,83 @@ main{
   
 }
 
+/* FORM */
+form {
+
+  display: grid;
+  grid-template-columns: 1fr;  
+
+  background-color: var(--primary-color);
+  border-radius: 16px;
+  padding: 0.5em 2em 2em 2em; 
+  margin: 4em 0.5em 0.5em 0.5em;  
+}
+
+form input[type="submit"]{
+  background-color: var(--secondary-color);
+
+   min-width: 0;
+   width: 15em;
+   height: 3.5em;
+   margin: 0 auto 0 auto;
+  
+}
+
+form label{
+  color: var(--subtitle-color);
+  font-weight: 500;
+  padding: 0em 0 0.5em 0;
+
+  margin-top: 2em;
+}
+
+form input {
+  border: none;
+  border-radius: 16px;
+  /* min-height: 4vh; */
+
+  padding-left: 1em;
+
+  width: 45em;
+  height: 2em;
+
+  font-family: 'Karla';
+
+}
+
+form input::value{
+  padding-left: 1em;
+}
+
+
+form select {
+  border: none;
+  border-radius: 16px;
+ 
+  width: 45em;
+  height: 2em;
+
+  padding-left: 1em;
+
+}
+
+.formSection{
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+
+  margin: 4em 0 4em 0;
+  font-family: 'Karla';
+}
+
+form small{
+  padding: 2em 0 0 0;
+  color: var(--subtitle-color);
+}
+
+form p{
+  color: var(--price-color);
+}
 
 /* FOOTER */
 footer {
@@ -304,7 +381,7 @@ footer .navLink{
 }
 
 /* Smaller Screens */
-@media only screen and (max-width: 630px){
+@media only screen and (max-width: 700px){
   
   /* HEADER  */
   header .desktopNav {
@@ -341,6 +418,18 @@ footer .navLink{
     max-width: 10em;    
   }
 
+  form input {
+    width: 18em;    
+  }
+
+  form input[type="submit"]{
+    margin: 2em auto 0 auto;
+    width: 10 em;
+  }
+
+  form select {
+    width: 18em;
+  }
 
 
   /* FOOTER */
