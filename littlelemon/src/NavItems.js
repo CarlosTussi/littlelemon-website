@@ -7,11 +7,11 @@ function NavItems()
             <ul>
                 <ul>
                     <li><Link to="/" className='navLink'>Home</Link></li>
-                    <li><Link to="/about" className='navLink'>About</Link></li>
-                    <li><Link to="/menu" className='navLink'>Menu</Link></li>
+                    <li><Link to="/comingsoon" className='navLink'>About</Link></li>
+                    <li><Link to="/comingsoon" className='navLink'>Menu</Link></li>
                     <li><Link to="/reservations" className='navLink'>Reservations</Link></li>
-                    <li><Link to="/order" className='navLink'>Order Online</Link></li>
-                    <li><Link to="/login" className='navLink'>Login</Link></li>                    
+                    <li><Link to="/comingsoon" className='navLink'>Order Online</Link></li>
+                    <li><Link to="/comingsoon" className='navLink'>Login</Link></li>                    
                 </ul>
             </ul>
         </>
