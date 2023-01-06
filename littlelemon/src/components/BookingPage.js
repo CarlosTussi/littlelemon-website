@@ -4,13 +4,12 @@ import HeroBanner from './HeroBanner';
 import { useEffect, useReducer, } from "react";
 
 import { fetchAPI, submitAPI } from '../api/api';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, } from 'react-router-dom';
 
 function BookingPage()
 {
 
     const navigate = useNavigate();
-
     /* NOTE:
         All these functions (submitForm, initializeTimes, updateTimes)
             are called inside <BookingForm> component using useEffect.
@@ -26,7 +25,7 @@ function BookingPage()
         const response = submitAPI(data);
         
         if (response){ 
-            navigate("/confirmation");
+            navigate("/confirmation", { state: data });
             console.log(data);
         }
         else
