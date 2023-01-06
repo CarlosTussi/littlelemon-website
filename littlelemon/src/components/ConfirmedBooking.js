@@ -17,16 +17,34 @@ function ConfirmedBooking(props) {
             console.log(item);
             return <h5 key={item}>{item}</h5>
          })}     */}
-          <h5>Name:</h5>
-          <h6>{data.bookingName}</h6>
-          <h5>Date:</h5>
-          <h6>{data.date}</h6>
-          <h5>Time:</h5>
-          <h6>{data.time}</h6>
-          <h5>Guests:</h5>
-          <h6>{data.guests}</h6>
-          <h5>Special Ocasion</h5>
-          <h6>{data.occasion.length > 0 ? data.occasion : "No"}</h6>
+
+         <h4>Your Booking is Confirmed!</h4>
+         <p>[Logo] showing a green confirmation tick</p>
+         <table>
+            <tr>
+                <th colSpan="2">Booking Details</th>
+            </tr>
+            <tr>
+                <td><h5>Name:</h5></td>
+                <td><h6>{data.bookingName}</h6></td>
+            </tr>
+            <tr>
+                <td><h5>Date:</h5></td>
+                <td><h6>{data.date}</h6></td>
+            </tr>
+            <tr>
+                <td><h5>Time:</h5></td>
+                <td><h6>{data.time}</h6></td>
+            </tr>
+            <tr>
+                <td><h5>Guests:</h5></td>
+                <td><h6>{data.guests}</h6></td>
+            </tr>
+            <tr>
+                <td><h5>Special Ocasion:</h5></td>
+                <td><h6>{data.occasion.length > 0 ? data.occasion : "No"}</h6></td>
+            </tr>
+         </table>
         </section>                       
         </>
        

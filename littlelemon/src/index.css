@@ -379,6 +379,30 @@ footer .navLink{
   text-decoration: none;
   color: var(--subtitle-color);
 }
+.confirmationTable{
+  display: grid;
+  justify-content: center;
+  margin: 4em 0 4em 0;
+}
+
+.confirmationTable h4 {
+  text-align: center;
+}
+
+table {
+  border-radius: 16px;
+  margin: 2em;
+  padding: 4em;
+  background-color: var(--card-background);
+}
+
+td{
+  padding: 1.5em;
+}
+th{
+  padding: 0 0 1em 0;
+  text-align: center;
+}
 
 /* Smaller Screens */
 @media only screen and (max-width: 700px){
