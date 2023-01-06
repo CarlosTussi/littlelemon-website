@@ -5,6 +5,8 @@ import { BrowserRouter } from 'react-router-dom';
 import BookingForm from './components/BookingForm';
 
 import { unmountComponentAtNode } from "react-dom";
+import { ErrorMessage } from 'formik';
+import { act } from 'react-dom/test-utils';
 
 test('Basic rendering testing', () => {
   
@@ -60,7 +62,9 @@ test("Testing updateTimes() and initializeTimes()", ()=> {
     /*"the fetchAPI function will return a non-empty array of available booking times."*/
      //Check that we have least one option in the dropdown menu
      //Time Regular expression
-    //('/[0-1]?[0-9]|2[0-3]:[0:5][0-9]/');     
+    //('/[0-1]?[0-9]|2[0-3]:[0:5][0-9]/');   
+    
+  
     const initialSelection = screen.getAllByText(/\d\d:\d\d/);  //Matching a time pattern xx:xx   
     expect(initialSelection).not.toHaveLength(0);
 
@@ -107,3 +111,69 @@ test("Testing updateTimes() and initializeTimes()", ()=> {
 
 
 });
+
+
+test('Form FAIL validation for all of the inputs', () => {
+  render( 
+    <BrowserRouter>
+      <BookingPage>
+        <BookingForm />                         
+      </BookingPage>
+      </BrowserRouter>
+      );
+
+
+    //Name
+    ////Didn't input anything
+    const nameInput = screen.getByLabelText("Name");
+    fireEvent.touchEnd(nameInput); 
+    const errorNameMessage = screen.getByText("Please type your name");
+    expect(errorNameMessage).toBeInTheDocument();
+
+    //Date
+    ////Chose a date in the past
+    const dateInput = screen.getByLabelText("Choose date");
+    fireEvent.change(dateInput, "2023-07-05"); //Invalid date (past)
+    const errorDateMessage = screen.getByText("Please select a valid date (DD/MM/YYY)");
+    expect(errorDateMessage).toBeInTheDocument();
+
+    //Time
+    ////Invalid input
+    const timeInput = screen.getByLabelText("Choose time");
+    fireEvent.touchEnd(timeInput); //Didn't select anything
+    const errorTimeMessage = screen.getByText("Please select a time slot");
+    expect(errorTimeMessage).toBeInTheDocument();
+
+    ////When selected "Select a time slot" and moved out of the input field, should be an error
+    fireEvent.change(timeInput, "Select a time slot"); //When selected the default option
+    fireEvent.touchEnd(timeInput); 
+    expect(errorTimeMessage).toBeInTheDocument();
+
+    //Guests
+    ////Inavlid entries (less or equal than 0 or more than 10)
+    const guestsInput = screen.getByLabelText("Number of guests");
+    fireEvent.change(guestsInput, "1");
+    const errorGuestsNegative = screen.getByText("Min 1 guest and max 10 guests");
+    expect(errorGuestsNegative).toBeInTheDocument();
+
+    //Test button disabled
+    const submitButton = screen.getByRole("button");
+    fireEvent.click(submitButton);
+    expect(submitButton).toHaveAttribute('disabled');
+
+    //Populating the form before sending
+    const date = screen.getByLabelText("Choose date");
+    const time = screen.getByLabelText("Choose time");
+    const guests = screen.getByLabelText("Number of guests");
+    const name = screen.getByLabelText("Name");
+
+    fireEvent.change(date, "2024-12-12");
+    fireEvent.change(time, "17:00");
+    fireEvent.change(guests, "3");
+    fireEvent.change(name, "Carlos");
+
+    expect(submitButton).not.toHaveAttribute('disabled="');
+
+
+
+})

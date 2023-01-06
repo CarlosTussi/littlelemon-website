@@ -128,8 +128,7 @@ function BookingForm(props)
                     Please select a time slot
                 </ErrorMessage>
                 <label htmlFor="guests">Number of guests</label>
-                <input type="number" 
-                        placeholder="1" 
+                <input type="number"  
                         min="1" max="10" 
                         id="guests" 
                         name="guests"
