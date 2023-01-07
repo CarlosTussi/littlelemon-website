@@ -113,6 +113,11 @@ button{
   margin: 1em 0;
 }
 
+button:hover,
+button:active{
+  background-color: var(--price-color);
+  cursor: pointer;
+}
 
 
 /* HEADER */

@@ -2,6 +2,7 @@ import SpecialsCard from "./SpecialsCard";
 import capreseSrc from '../assets/caprese.jpeg'
 import tiramisuSrc from '../assets/tiramisu.jpeg'
 import bologneseSrc from '../assets/bolognese.jpeg'
+import { useNavigate } from "react-router-dom";
 
 const weeklyCards = [
     {
@@ -31,12 +32,13 @@ const weeklyCards = [
 
 function WeeklySpecials()
 {
+    const navigate = useNavigate();
     return(
         <section className="weeklySection"
         >
             <div className="weeklySectiontitle">       
                 <h4>This Week's Specials!</h4>  
-                <button>Online Menu</button>   
+                <button onClick={(e) => navigate("/comingsoon")}>Online Menu</button>   
             </div>       
             <div className="weeklySpecialsContent">            
             {
