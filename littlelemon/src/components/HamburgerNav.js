@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import hamburgerIcon from '../assets/hamburger.svg'
 import NavItems from './NavItems';
+import {useSideMenuContext} from '../context/SideMenuProvider'
 import {X,} from 'react-feather';
 
 function HamburgerNav()
 {
 
-    const [isOpen, setIsOpen] = useState(false);
+    const {isOpen, setIsOpen} = useSideMenuContext();
     const sideMenuRef = useRef();
 
      useEffect(()=>{

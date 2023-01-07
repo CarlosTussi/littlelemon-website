@@ -6,7 +6,7 @@ function Header(){
     return (
         <header>
             <img src={logoSrc} alt="Little lemon header logo"/>
-            <DesktopNav />
+            <DesktopNav />            
             <HamburgerNav />
         </header>
     );
