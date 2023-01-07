@@ -14,7 +14,7 @@ function ComingSoon()
                     height: "10em",
                     paddingTop: "5em"
             }}>
-            <h4>Page still under renovation ♡</h4>
+            <h4>Page still under construction ♡</h4>
           </section>
         </>
     );

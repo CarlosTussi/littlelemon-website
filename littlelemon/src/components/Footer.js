@@ -1,5 +1,6 @@
 import footerLogo from '../assets/lemonBright.png'
 import NavItems from '../NavItems';
+import {Facebook, Instagram, MapPin, Phone, AtSign} from 'react-feather';
 
 function Footer(){
     return (
@@ -7,21 +8,21 @@ function Footer(){
             <img src={footerLogo} alt="Logo showing only a yellow lemon" />
             <section className="doormatNav">
                 <h3>Doormat Navigation</h3>
-                    <NavItems />         
+                <NavItems />         
             </section>
-            <section>
+            <section className="footerContact">
                 <h3>Contact</h3>
                 <ul>
-                    <li>[ICON]Address</li>
-                    <li>[ICON]Phone Number</li>
-                    <li>[ICON]email</li>
+                    <li><MapPin size="1em" strokeWidth="0.8"/>Chicago, USA</li>
+                    <li><Phone size="1em" strokeWidth="0.8"/> +12345678910</li>
+                    <li><AtSign size="1em" strokeWidth="0.8"/>contact@littlelemon.com</li>
                 </ul>
             </section>
-            <section>
+            <section className="footerSocial">
                 <h3>Social</h3>
                 <ul>
-                    <li>Instagram</li>
-                    <li>Facebook</li>
+                    <li><a href='http://facebook.com' target="_blank" rel="noreferrer"><Facebook size="3em" strokeWidth="0.8"/></a></li>
+                    <li><a href='http://instagram.com' target="_blank" rel="noreferrer"><Instagram size="3em" strokeWidth="0.8"/></a></li>
                 </ul>
             </section>
 

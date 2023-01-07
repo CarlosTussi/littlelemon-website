@@ -1,6 +1,8 @@
 import HeroBanner from './HeroBanner';
 import imgSrc from '../assets/restaurant.jpeg'
 import { useLocation, } from 'react-router-dom';
+import {CheckCircle,} from 'react-feather';
+
 function ConfirmedBooking(props) {
 
     const location = useLocation();
@@ -19,7 +21,7 @@ function ConfirmedBooking(props) {
          })}     */}
 
          <h4>Your Booking is Confirmed!</h4>
-         <p>[Logo] showing a green confirmation tick</p>
+         <CheckCircle size="4em" color="#495E57"/>
          <table>
             <tr>
                 <th colSpan="2">Booking Details</th>

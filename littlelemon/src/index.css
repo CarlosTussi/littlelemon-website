@@ -129,6 +129,10 @@ header .navLink {
   color: var(--subheading-color);
 }
 
+header .navLink:hover{
+  color: var(--primary-color);
+}
+
 header .hamburgerNav{
   display: none;
 }
@@ -354,40 +358,20 @@ form p{
   color: var(--price-color);
 }
 
-/* FOOTER */
-footer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-
-  background-color: var(--primary-color);
-}
-
-footer img {
-  max-width: 5em;
-}
-
-footer ul {
-  list-style: none;
-}
-
-footer li{
-  color: var(--subtitle-color);
-}
-
-footer .navLink{
-  text-decoration: none;
-  color: var(--subtitle-color);
-}
 .confirmationTable{
   display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto auto auto;
   justify-content: center;
+  justify-items: center;
   margin: 4em 0 4em 0;
 }
 
 .confirmationTable h4 {
   text-align: center;
+  padding:0 0 1em 0;
 }
+
 
 table {
   border-radius: 16px;
@@ -404,6 +388,94 @@ th{
   text-align: center;
 }
 
+/* FOOTER */
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+
+  background-color: var(--primary-color);
+  padding: 1.5em 0 1.5em 0;
+}
+
+footer img {
+  max-width: 5em;
+}
+
+footer ul {
+  list-style: none;
+}
+
+footer li{
+  color: var(--subtitle-color);
+}
+
+footer h3{
+  color: var(--price-color);
+}
+
+footer .navLink{
+  text-decoration: none;
+  color: var(--subtitle-color);
+}
+
+footer .navLink:hover{
+  color: var(--secondary-color);
+}
+
+.footerSocial{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+  justify-items: center;
+}
+
+.footerSocial ul{
+  display: flex;
+}
+
+.footerSocial li{
+  padding: 0 1em 0 1em;
+}
+
+.footerSocial a{
+  text-decoration: none;
+  color: var(--card-background);
+}
+
+.footerSocial a:hover{
+  color: var(--secondary-color);
+  cursor: pointer;
+}
+
+.footerSocial h3{
+  grid-column: 1/3;
+}
+
+.footerContact {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+  justify-items: center;
+}
+
+.footerContact ul{
+  display:flex;
+  flex-direction: column;
+
+}
+
+.footerContact li{
+  padding: 0.2em 0 0.2em 0;
+}
+
+.doormatNav h3{
+  padding: 0 0 1em 0;
+}
+
+.doormatNav:nth-child(2){
+  text-align: center;
+}
 /* Smaller Screens */
 @media only screen and (max-width: 700px){
   
@@ -462,6 +534,10 @@ th{
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
     justify-items: center;
+  }
+
+  footer h3{
+    padding: 0 0 0.5em 0;
   }
 
   footer img {
