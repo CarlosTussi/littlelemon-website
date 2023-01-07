@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, } from 'react';
 import hamburgerIcon from '../assets/hamburger.svg'
 import NavItems from './NavItems';
 import {useSideMenuContext} from '../context/SideMenuProvider'

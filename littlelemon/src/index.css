@@ -451,15 +451,20 @@ table {
   border-radius: 16px;
   margin: 2em;
   padding: 4em;
-  background-color: var(--card-background);
+  background-color: var(--primary-color);
 }
 
 td{
   padding: 1.5em;
 }
+
+td h5{
+  color: var(--subtitle-color);
+}
 th{
   padding: 0 0 1em 0;
   text-align: center;
+  color: var(--secondary-color);
 }
 
 /* FOOTER */
