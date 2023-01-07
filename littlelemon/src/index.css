@@ -143,8 +143,8 @@ header .hamburgerNav{
 }
 
 header img {
-  max-width: 20em;  
-  padding: 0 0 0 0;  
+  max-width: 15em;  
+  padding: 1em 0 1em 0;  
 
 }
 
@@ -159,6 +159,10 @@ header li {
   padding: 0 1em 0 1em;
   margin: 0 auto 0 auto;
   font-size: large;
+}
+
+.hamburgerNav img{
+  border-radius: 0;
 }
 
 /* MAIN */
@@ -490,6 +494,12 @@ footer .navLink:hover{
 @media only screen and (max-width: 700px){
   
   /* HEADER  */
+  header{
+    display: flex;
+    justify-content: space-between;
+    margin: 1em 1em 1em 1em;
+  }
+
   header .desktopNav {
     display: none;
   }
