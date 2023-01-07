@@ -32,7 +32,7 @@ function HamburgerNav()
                                     isOpen ? {right: "0em"} : {right: "-40em"}
                                 }
                                  >
-                                <button><X size="2em"/></button>
+                                <button><X size="2em" onClick={() => setIsOpen(false)}/></button>
                                 <NavItems/> 
                             </div>                            
                             
