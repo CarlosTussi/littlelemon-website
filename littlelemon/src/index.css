@@ -161,9 +161,59 @@ header li {
   font-size: large;
 }
 
+.transparentBackground {
+  background-color: #333333;
+  opacity: 0.7;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top:0;
+  right:0;
+  z-index: 1;
+}
+
 .hamburgerNav img{
   border-radius: 0;
 }
+
+.hamburgerNav ul{
+  display: grid;
+  grid-template-columns: 1fr;
+  background-color: var(--primary-color);
+
+  text-align: left;
+  padding: 3em 0 0 0;
+}
+
+.hamburgerNav li{ 
+  padding: 1.5em 6em 1.5em 0.5em;
+  margin: 0;
+}
+
+.hamburgerNav .navLink{
+  color: var(--secondary-color);
+}
+
+.hamburgerNav .navLink:hover{
+  color: var(--subtitle-color);
+}
+
+.openHamburgerMenu{
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
+  padding: 1em 0 0 3em;
+  border-radius: 16px 0 0 16px;
+}
+
+/* Will select the first child */
+.openHamburgerMenu>:hover{
+  color: var(--subtitle-color);
+}
+
 
 /* MAIN */
 main{
