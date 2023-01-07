@@ -27,7 +27,7 @@ function HamburgerNav()
 
                         <>
                             
-                            {isOpen? <div className="transparentBackground" aria-hidden="true"/>: ""}
+                            {isOpen? <div className="transparentBackground" onClick={()=> setIsOpen(false)} aria-hidden="true"/>: ""}
                             <div className="openHamburgerMenu"
                                  ref={sideMenuRef}
                                 style={
