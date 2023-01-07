@@ -171,8 +171,6 @@ header li {
   right:0;
   z-index: 1;
 
-  transition-duration: 0.5s;
-  transition-timing-function: ease-in-out;
 }
 
 .hamburgerNav img{

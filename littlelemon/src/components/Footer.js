@@ -1,5 +1,5 @@
 import footerLogo from '../assets/lemonBright.png'
-import NavItems from '../NavItems';
+import NavItems from './NavItems';
 import {Facebook, Instagram, MapPin, Phone, AtSign} from 'react-feather';
 
 function Footer(){

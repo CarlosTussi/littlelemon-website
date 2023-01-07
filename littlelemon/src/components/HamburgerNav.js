@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import hamburgerIcon from '../assets/hamburger.svg'
-import NavItems from '../NavItems';
+import NavItems from './NavItems';
 import {X,} from 'react-feather';
 
 function HamburgerNav()
