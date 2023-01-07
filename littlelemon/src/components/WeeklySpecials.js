@@ -36,7 +36,7 @@ function WeeklySpecials()
     return(
         <section className="weeklySection"
         >
-            <div className="weeklySectiontitle">       
+            <div className="sideByside">       
                 <h4>This Week's Specials!</h4>  
                 <button onClick={(e) => navigate("/comingsoon")}>Online Menu</button>   
             </div>       
