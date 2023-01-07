@@ -15,7 +15,7 @@ function Footer(){
                 <ul>
                     <li><MapPin size="1em" strokeWidth="0.8"/>Chicago, USA</li>
                     <li><Phone size="1em" strokeWidth="0.8"/> +12345678910</li>
-                    <li><AtSign size="1em" strokeWidth="0.8"/>contact@littlelemon.com</li>
+                    <li><AtSign size="1em" strokeWidth="0.8"/>hi@littlelemon.com</li>
                 </ul>
             </section>
             <section className="footerSocial">

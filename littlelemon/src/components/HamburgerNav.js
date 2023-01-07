@@ -3,6 +3,7 @@ import hamburgerIcon from '../assets/hamburger.svg'
 import NavItems from './NavItems';
 import {useSideMenuContext} from '../context/SideMenuProvider'
 import {X,} from 'react-feather';
+import menuLogo from '../assets/lemonBright.png'
 
 function HamburgerNav()
 {
@@ -35,6 +36,7 @@ function HamburgerNav()
                                  >
                                 <button><X size="2em" onClick={() => setIsOpen(false)}/></button>
                                 <NavItems/> 
+                                <img src={menuLogo} alt="yellow lemon logo" />
                             </div>                            
                             
                         </>                           
