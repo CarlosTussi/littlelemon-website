@@ -264,7 +264,7 @@ main{
   justify-content: space-between;
 
   grid-area: titlePrice;
-  padding: 1em 1em 4em 1em;;
+  padding: 1em 1em 4em 1.5em;;
 }
 
 .cardContent p{
@@ -276,14 +276,19 @@ main{
 .cardContent button{
   grid-area: button;
 
-  background-color: var(--primary-color);
-  color: var(--secondary-color);
+  background-color: transparent;
+  color: var(--subheading-color);
   border-radius: 0;
   cursor: pointer;
 
+  text-align: left;
   margin: 0;
-  
 }
+
+.cardContent button:hover{
+  color: var(--secondary-color);
+}
+
 
 /* FORM */
 form {

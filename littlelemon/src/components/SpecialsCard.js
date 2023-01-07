@@ -1,3 +1,4 @@
+import {ShoppingCart} from 'react-feather';
 function SpecialsCard(props)
 {
     return(
@@ -9,7 +10,7 @@ function SpecialsCard(props)
                 <h6>{props.price}</h6>
             </div>            
             <p>{props.description}</p>
-            <button>Order Now [ICON]</button>
+            <button>Order Now<span style={{padding: "0 1em 0 1em"}}></span><ShoppingCart /></button>
         </div>
        
         
