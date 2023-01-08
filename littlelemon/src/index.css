@@ -417,10 +417,11 @@ form select {
   border: none;
   border-radius: 16px;
  
-  width: 45em;
+  width: 46em;
   height: 2em;
 
   padding-left: 1em;
+  font-family: 'Karla';
 
 }
 
@@ -473,6 +474,41 @@ th{
   padding: 0 0 1em 0;
   text-align: center;
   color: var(--secondary-color);
+}
+
+
+.confirmationBox{
+  position: fixed;
+  z-index: 4;
+  top: 10vh;
+  display: grid;
+  grid-template-columns: auto;
+  
+  background-color: var(--primary-color);
+  border-radius: 16px;
+}
+
+.confirmationBox h5{  
+  color: var(--subtitle-color);
+  padding: 3em 3em 3em 4em;
+}
+
+.confimationField{  
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  justify-content: space-between;
+
+}
+
+.confimationField p{
+  color: var(--subtitle-color);
+  padding: 1em 1em 1em 4em;
+}
+
+.confirmEditButton{
+  display: flex;
+  justify-content: space-evenly;
 }
 
 /* FOOTER */
@@ -617,7 +653,7 @@ footer .navLink:hover{
   }
 
   form select {
-    width: 18em;
+    width: 19em;
   }
 
 

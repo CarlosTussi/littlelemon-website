@@ -3,10 +3,7 @@ import BookingPage from './components/BookingPage';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import BookingForm from './components/BookingForm';
-
 import { unmountComponentAtNode } from "react-dom";
-import { ErrorMessage } from 'formik';
-import { act } from 'react-dom/test-utils';
 
 test('Basic rendering testing', () => {
   
@@ -24,7 +21,7 @@ test('Basic rendering testing', () => {
 });
 
 
-  /* NEED TO BE CREATED OUTSIDE TEST */
+  /* NEED TO BE CREATED OUTSIDE TEST SUIT */
   //We can populate container to check it renders whatever we are expecting
   let container = null;
   beforeEach(() => {
@@ -77,7 +74,7 @@ test("Testing updateTimes() and initializeTimes()", ()=> {
     expect(updateSelection).not.toHaveLength(0);
 
 
-    /* JUST FO REFERENCE */
+    /* JUST FOR REFERENCE */
 
 
     //1) Check if the value on the time slot input equals the initialSlots value

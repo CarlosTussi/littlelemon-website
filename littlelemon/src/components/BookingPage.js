@@ -20,8 +20,7 @@ function BookingPage()
 
         I believe this whole logic could have been implemented inside <BookingForm> itself.
     */
-    const submitForm = (data) => {
-
+    const submitForm = (data) => {        
         const response = submitAPI(data);
         
         if (response){ 
@@ -30,6 +29,7 @@ function BookingPage()
         }
         else
             console.log("Error");
+
         
     }
     
@@ -76,12 +76,11 @@ function BookingPage()
         }                
     }
 
-    const [availableTimes, dispatch] = useReducer(updateTimes, [""], initializeTimes);
+    const [availableTimes, dispatch] = useReducer(updateTimes, [""], initializeTimes);    
 
     useEffect (() => {
         dispatch({type: "initialize"});
-    },[])//Empty array because only executed when initializing
-
+    },[])//Empty array because only executed when initializing    
 
     return(
         <>
@@ -93,8 +92,8 @@ function BookingPage()
                 <h4>Reserve a Table</h4>
                 <BookingForm availableTimes={availableTimes} 
                              dispatch={dispatch}
-                             onSubmit={submitForm}
-                    />
+                             onSubmit={submitForm}                            
+                    />                    
             </section>
         </>
     )

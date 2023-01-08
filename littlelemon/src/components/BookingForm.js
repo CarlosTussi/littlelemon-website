@@ -29,7 +29,7 @@ function BookingForm(props)
         },
 
         onSubmit: (data) => {  
-            //Will trigger the useEffect hook which will submit the data                     
+            //Will trigger the useEffect hook which will submit the data                                 
             setIsSubmitted(true);
         },
 
@@ -44,7 +44,7 @@ function BookingForm(props)
     })
 
     const [isSubmitted, setIsSubmitted] = useState(false);
-
+    
     //Retrieve Available Slots with the new date
     const dispatch = props.dispatch;
     useEffect( () =>{        
@@ -77,6 +77,7 @@ function BookingForm(props)
                 )   
                 return true;       
     }
+
 
     //formik.touched.name && formik.errors.hasOwnProperty("name")
     //{...formik.getFieldProps("name")}
