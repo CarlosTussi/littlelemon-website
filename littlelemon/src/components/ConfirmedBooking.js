@@ -19,6 +19,7 @@ function ConfirmedBooking(props) {
                     <h4>Your Booking is Confirmed!</h4>  
             <CheckCircle size="4em" color="#495E57"/>
             <table>
+                <tbody>
                 <tr>
                     <th colSpan="2">Booking Details</th>
                 </tr>
@@ -42,6 +43,7 @@ function ConfirmedBooking(props) {
                     <td><h5>Special Ocasion:</h5></td>
                     <td><h6>{data.occasion.length > 0 ? data.occasion : "No"}</h6></td>
                 </tr>
+                </tbody>
             </table>
             <button onClick={()=> navigate('/')}>Go Back</button>   
         </section>    

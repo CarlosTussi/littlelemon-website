@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, } from "react";
 import {useFormik, } from "formik";
 import * as Yup from "yup";
 import { usePopUpContext } from '../context/PopUpProvider';
@@ -32,7 +32,6 @@ function BookingForm(props)
 
         onSubmit: (data) => {  
             //Will trigger the useEffect hook which will submit the data                                 
-            // setIsSubmitted(true);
             setIsPopUpOpen(true);
         },
 
@@ -46,9 +45,7 @@ function BookingForm(props)
         })
     })
 
-    const [isSubmitted, setIsSubmitted] = useState(false);
-
-    const {isPopUpOpen, setIsPopUpOpen, data, isSubmissionConfirmed, setIsSubmissionConfirmed} = usePopUpContext();
+    const {isPopUpOpen, setIsPopUpOpen, isSubmissionConfirmed, setIsSubmissionConfirmed} = usePopUpContext();
     //Retrieve Available Slots with the new date
     const dispatch = props.dispatch;
     useEffect( () =>{        
@@ -61,17 +58,11 @@ function BookingForm(props)
     const onSubmit = props.onSubmit; //callback function that will run submitAPI
     useEffect( () => {
         //To avoid the initial execution
-        // if(isSubmitted){   
-        //     setIsPopUpOpen(true);  
-        //     if(isSubmissionConfirmed)     
-        //         onSubmit(formik.values);           
-        // }
-
         if(isSubmissionConfirmed){
             onSubmit(formik.values);         
             setIsSubmissionConfirmed(false);
         }
-    },[isSubmissionConfirmed,isSubmitted, onSubmit, formik.values, setIsPopUpOpen, setIsSubmissionConfirmed])
+    },[isSubmissionConfirmed, onSubmit, formik.values, setIsSubmissionConfirmed])
 
 
     //Logic to enable/disbable the submit button
@@ -89,9 +80,6 @@ function BookingForm(props)
                 return true;       
     }
 
-
-    //formik.touched.name && formik.errors.hasOwnProperty("name")
-    //{...formik.getFieldProps("name")}
     return(
         <>    
             <form onSubmit={formik.handleSubmit} 
