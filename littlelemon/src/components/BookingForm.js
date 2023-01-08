@@ -46,6 +46,7 @@ function BookingForm(props)
     })
 
     const {isPopUpOpen, setIsPopUpOpen, isSubmissionConfirmed, setIsSubmissionConfirmed} = usePopUpContext();
+    
     //Retrieve Available Slots with the new date
     const dispatch = props.dispatch;
     useEffect( () =>{        
