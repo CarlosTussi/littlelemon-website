@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import {useFormik, } from "formik";
 import * as Yup from "yup";
+import { usePopUpContext } from '../context/PopUpProvider';
+import PopUp from './PopUp';
 
 
 
@@ -30,7 +32,8 @@ function BookingForm(props)
 
         onSubmit: (data) => {  
             //Will trigger the useEffect hook which will submit the data                                 
-            setIsSubmitted(true);
+            // setIsSubmitted(true);
+            setIsPopUpOpen(true);
         },
 
         validationSchema: Yup.object({
@@ -44,7 +47,8 @@ function BookingForm(props)
     })
 
     const [isSubmitted, setIsSubmitted] = useState(false);
-    
+
+    const {isPopUpOpen, setIsPopUpOpen, data, isSubmissionConfirmed, setIsSubmissionConfirmed} = usePopUpContext();
     //Retrieve Available Slots with the new date
     const dispatch = props.dispatch;
     useEffect( () =>{        
@@ -57,10 +61,17 @@ function BookingForm(props)
     const onSubmit = props.onSubmit; //callback function that will run submitAPI
     useEffect( () => {
         //To avoid the initial execution
-        if(isSubmitted){          
-            onSubmit(formik.values);
+        // if(isSubmitted){   
+        //     setIsPopUpOpen(true);  
+        //     if(isSubmissionConfirmed)     
+        //         onSubmit(formik.values);           
+        // }
+
+        if(isSubmissionConfirmed){
+            onSubmit(formik.values);         
+            setIsSubmissionConfirmed(false);
         }
-    },[isSubmitted, onSubmit, formik.values])
+    },[isSubmissionConfirmed,isSubmitted, onSubmit, formik.values, setIsPopUpOpen, setIsSubmissionConfirmed])
 
 
     //Logic to enable/disbable the submit button
@@ -150,6 +161,7 @@ function BookingForm(props)
                     aria-label="Submit form"
                                     />
             </form>
+            {isPopUpOpen? <PopUp data={formik.values}/> : ""}
         </>
     );
 }
