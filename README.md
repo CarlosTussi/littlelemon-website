@@ -4,7 +4,7 @@ Project: Restaurant Website
 To run:
 1) Clone repository
 ```
-git clone https://github.com/CarlosTussi/littlelemon.git
+git clone https://github.com/CarlosTussi/littlelemon-website.git
 ```
 2) On the same directory as "package.json" run the command
 ```
