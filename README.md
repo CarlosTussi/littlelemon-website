@@ -16,4 +16,6 @@ npm install
 npm start
 ```
 
+4) Inside the brownser navigate to http://localhost:3000/
+
 
