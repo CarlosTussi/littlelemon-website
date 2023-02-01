@@ -22,3 +22,5 @@ npm start
 
 
 ![alt text](https://github.com/CarlosTussi/images/blob/main/littlelemon1.png)
+![alt text](https://github.com/CarlosTussi/images/blob/main/littlelemon2.png)
+![alt text](https://github.com/CarlosTussi/images/blob/main/littlelemon3.png)
